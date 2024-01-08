@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background: url('https://as2.ftcdn.net/v2/jpg/02/66/38/15/1000_F_266381525_alVrbw15u5EjhIpoqqa1eI5ghSf7hpz7.jpg');
+}
+.container-fluid
+{
+    width: 400px;
+    margin: 60px auto;
+    padding: 10px;
+}
+.inputs 
+{
+    padding: 2rem 0 2rem 0;
+    text-align: center;
+    justify-content: center;
+    background: hsl(188, 100%, 56%);
+}
+.inputs input[type="text"] 
+{
+    height: 4rem;
+    width: 20rem;
+    background: #212121;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    border: 2px solid #c2c2c2;
+    border-radius: 2px;
+    margin-right:4px ;
+}
+.inputs input[type="submit"] 
+{
+    height: 3rem;
+    width: 6rem;
+    background: #0a67ca;
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+    margin-top: 20px;
+    border: none;
+    border-radius: 2px;
+}
+/* #display{
+   
+} */
+.res{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+.display 
+{
+    text-align: center;
+    width: 400px;
+    color: #16a864;
+}
+.wrapper 
+{
+    margin: 0 9rem;
+    background-color: white;
+    height: 45vh;
+    margin: 50px auto;
+    border-radius: 2px;
+}
+
+.wrapper h2
+{
+    padding: 5px 0;
+    text-align: center;
+    background: #0548b5;
+    color: white;
+    font-family: sans-serif;
+}
+.wrapper p
+{
+    margin:20px 50px;
+    margin-right: 20px;
+    text-align: left;
+    color: #04214c;
+    font-size:23px;
+}
+.wrapper h2 span
+{
+    font-size: 26px;
+    color: #9beefb;
+}
+.wrapper p span
+{
+    color: #f4780d;
+    font-size: 25px;
+}
+* {
+	box-sizing: border-box;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.4rem;
+}
+
+@media (min-width: 50em) {
+	h2 {
+		font-size: 1.8rem;
+	}
+}
+
+.cta {
+	--shadowColor: 187 60% 40%;
+	display: flex;
+	flex-wrap: wrap;
+	background: hsl(188, 100%, 56%);
+	max-width: 50rem;
+	width: 100%;
+	box-shadow: 0.65rem 0.65rem 0 hsl(var(--shadowColor) / 1);
+	border-radius: 0.8rem;
+	overflow: hidden;
+	border: 0.5rem solid;
+}
+
+.cta img {
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
+	flex: 1 1 300px;
+	outline: 0.5rem solid;
+}
+
+.cta__text-column {
+	padding: min(2rem, 5vw) min(2rem, 5vw) min(2.5rem, 5vw);
+	flex: 1 0 50%;
+}
+
+.cta__text-column > * + * {
+	margin: min(1.5rem, 2.5vw) 0 0 0;
+}
+
+.cta a {
+	display: inline-block;
+	color: black;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	background: hsl(187 75% 64%);
+	border-radius: 0.6rem;
+	font-weight: 700;
+	border: 0.35rem solid;
+}

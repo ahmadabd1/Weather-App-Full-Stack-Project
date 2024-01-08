@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const api = require('./routes/api')
 var bodyParser = require('body-parser')
-
+const path =require('path')
 
 
 // parse application/x-www-form-urlencoded
@@ -18,6 +18,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/weatherDB", {
 }).catch((err)=> console.log(err))
 
 
+app.use(express.static(path.join(__dirname,'dist')))
+app.use(express.static(path.join(__dirname,'node_modules')))
 app.use('/', api)
 
 const port = 4200

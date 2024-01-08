@@ -1,16 +1,30 @@
 
 const axios = require('axios');
+const configs = require('./configs')
 class ApiManger {
     constructor() {
-        this.weatherDataList = []
+        this.weatherDataList=[]
     }
     getTheData(name) {
-        const weatherPromise = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=c0f07e5f9e057fb360f77824be970b25&units=metric`)
+        try{
+        const weatherPromise = axios.get(`${configs.URL_WEATHERS}q=${name}&appid=${configs.API_WEATHERS}&units=metric`)
         return weatherPromise
+        }catch(error){
+            console.error("the input no defined")
+        }
     }
-    getTheList(){
-        return this.weatherDataList
+    filterWeatherData(dataWeather) {
+        return dataWeather.then(data => {
+            return {
+                id: data.data.id,
+                name: data.data.name,
+                conditionPic: data.data.weather[0].icon,
+                tempe: data.data.main.temp,
+                condition: data.data.weather[0].description
+            }
+        })
     }
+
 }
 module.exports = ApiManger
 
