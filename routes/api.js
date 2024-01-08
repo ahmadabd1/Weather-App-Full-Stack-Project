@@ -2,11 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 const Weather = require('../models/Weather ')
-const apiManger = require('../models/apiManger')
+const apiManger = require('../models/apimanger')
 
 const apiMangweather = new apiManger()
-
-
 
 router.get('/weathers', function (req, res) {
     const Db = Weather.find({})

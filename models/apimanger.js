@@ -1,6 +1,7 @@
 
 const axios = require('axios');
 const configs = require('./configs')
+
 class ApiManger {
     constructor() {
         this.weatherDataList=[]
