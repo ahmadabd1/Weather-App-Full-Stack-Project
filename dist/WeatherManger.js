@@ -32,7 +32,9 @@ class WeatherManger {
         const delweather = await $.ajax({
             url: `/weathers/${cityname}`,
             type: 'DELETE',
-            success: function(result) {}
+            success: function(result) {
+
+            }
         });
         return delweather  
     }
@@ -43,9 +45,6 @@ class WeatherManger {
         this.weatherDataList.splice(i,1)
         return name
     }
-    getTheList() {
-        return this.weatherDataList
-    }
     addToTheList(weather) {
         weather.inData = false
         this.weatherDataList.push(weather)
@@ -55,5 +54,8 @@ class WeatherManger {
         weather.inData = true
         const i = this.weatherDataList.findIndex(x =>x.id === parseInt(weather.id ))
         this.weatherDataList[i] = weather
+    }
+    getTheList() {
+        return this.weatherDataList
     }
 }

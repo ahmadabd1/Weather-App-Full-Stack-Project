@@ -154,3 +154,11 @@ h2 {
 	font-weight: 700;
 	border: 0.35rem solid;
 }
+.reload {
+    font-family: Lucida Sans Unicode;
+    color: #111;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-weight: 900;
+  }

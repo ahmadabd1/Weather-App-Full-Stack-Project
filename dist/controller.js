@@ -35,6 +35,7 @@ divDisplay.on('click', '.btnadd', function () {
 })
 
 divDisplay.on('click', '.btndelete', function () {
+    
     divDisplay.empty()
     const idweather = $(this).attr("id")
     const deleteData = mangeWeathers.deleteweather(idweather)
@@ -42,4 +43,18 @@ divDisplay.on('click', '.btndelete', function () {
         console.log(resweather)
     })
     rend.displayTheWeathers(mangeWeathers.getTheList())
+})
+
+divDisplay.on('click', '.reload', function () {
+    divDisplay.empty()
+    const nameToRefresh = $(this).closest("div").find("h2").text()
+    const idToRefresh = $(this).closest("div").find("i").attr("id")
+    const deleteData = mangeWeathers.deleteweather(idToRefresh)
+    deleteData.then(resweather => {
+        console.log(resweather)
+        const reloadData = mangeWeathers.getWeatherByCityName(nameToRefresh)
+        reloadData.then(res => {
+            rend.displayTheWeathers(mangeWeathers.getTheList())
+        })
+    })
 })

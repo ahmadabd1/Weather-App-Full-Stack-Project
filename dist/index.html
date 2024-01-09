@@ -33,13 +33,15 @@
             <h2>{{this.name}}</h2>
             <h4>The Temperature: {{this.tempe}} &#8451;</h4>
             <h4>The condition: {{this.condition}}</h4>
+
             {{#if this.inData}}
-            <!-- <button id= {{this.id}} class=btndelete>Delete</button> -->
-            <i class="fa fa-trash btndelete" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: red;"></i>
+              <i class="fa fa-trash btndelete" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: red;"></i>
+              <span class=reload>&#x21bb;</span>
             {{else}}
-            <!-- <button id= {{this.id}} class=btnadd>Add</button> -->
-            <i class="fa fa-plus btnadd" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: green;"></i>
+              <i class="fa fa-plus btnadd" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: green;"></i>
+              <span class=reload>&#x21bb;</span>
             {{/if}}
+            
           </div>
           <img src='https://openweathermap.org/img/wn/{{this.conditionPic}}@2x.png' alt='Bluetit'></img>
         </article>
