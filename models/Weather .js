@@ -6,7 +6,8 @@ const weatherSchema = new Schema({
     name: String,
     tempe: Number,
     condition: String,
-    conditionPic:String
+    conditionPic:String,
+    date:Date
 })
 
 const Weather = mongoose.model("weather", weatherSchema)

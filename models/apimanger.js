@@ -14,6 +14,7 @@ class ApiManger {
             console.error("the input no defined")
         }
     }
+
     filterWeatherData(dataWeather) {
         return dataWeather.then(data => {
             return {
@@ -21,7 +22,8 @@ class ApiManger {
                 name: data.data.name,
                 conditionPic: data.data.weather[0].icon,
                 tempe: data.data.main.temp,
-                condition: data.data.weather[0].description
+                condition: data.data.weather[0].description,
+                date:new Date().toString()
             }
         })
     }
