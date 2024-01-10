@@ -5,6 +5,7 @@ const configs = require('./configs')
 class ApiManger {
     constructor() {
         this.weatherDataList=[]
+        this.myLocate
     }
     getTheData(name) {
         try{
@@ -14,18 +15,25 @@ class ApiManger {
             console.error("the input no defined")
         }
     }
-
+   async fetMyWeatherLocation(lat,lon){
+        const myWeatherPromise = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c0f07e5f9e057fb360f77824be970b25&units=metric`)
+        this.myLocate=myWeatherPromise
+        return myWeatherPromise
+    }
     filterWeatherData(dataWeather) {
-        return dataWeather.then(data => {
+        try {
             return {
-                id: data.data.id,
-                name: data.data.name,
-                conditionPic: data.data.weather[0].icon,
-                tempe: data.data.main.temp,
-                condition: data.data.weather[0].description,
-                date:new Date().toString()
+                id: dataWeather.data.id,
+                name: dataWeather.data.name,
+                conditionPic: dataWeather.data.weather[0].icon,
+                tempe: dataWeather.data.main.temp,
+                condition: dataWeather.data.weather[0].description,
+                date:new Date()
             }
-        })
+        } catch (error) {
+            console.error("no filters")
+        }
+      
     }
 
 }

@@ -2,7 +2,26 @@ const rend = new Render()
 const mangeWeathers = new WeatherManger()
 
 
+
+// $("#mywe").empty() 
+
+function getLocation() { 
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  function showPosition(position) {
+    showMyWeather(  position.coords.latitude ,position.coords.longitude)
+  }
+const showMyWeather = function(lat,lon){
+    const displayWeather = mangeWeathers.getMyWeather(lat,lon)
+    displayWeather.then(mweather=>{
+        
+        rend.displayMyLocateWeathers(mweather)
+    })
+}
+getLocation()
+
 const mongoDB = function () {
+    
     const displayDB = mangeWeathers.getAllTheWeathersData()
     displayDB.then(data => {
         rend.displayTheWeathers(data)
@@ -10,13 +29,14 @@ const mongoDB = function () {
 }
 mongoDB()
 
+
 searchBTN.on('click', function () {
     const searchInput = cityInput.val()
 
     if (searchInput != "") {
-        divDisplay.empty()
         const theWeather = mangeWeathers.getWeatherByCityName(searchInput)
         theWeather.then(res => {
+            divDisplay.empty()
             rend.displayTheWeathers(mangeWeathers.getTheList())
         })
     } else {

@@ -6,30 +6,31 @@ const apiManger = require('../models/apimanger')
 
 const apiMangweather = new apiManger()
 
-router.get('/weathers', function (req, res) {
-    const Db = Weather.find({})
-    Db.then(weatherdata=>{
-        res.send(weatherdata)    
-    }) 
+router.get('/weather/my/:lat/:lon',async function(req,res){
+    const lat = req.params.lat
+    const lon = req.params.lon
+    const weatherData =await apiMangweather.fetMyWeatherLocation(lat,lon)
+    const filterData = apiMangweather.filterWeatherData(weatherData)
+    res.send(filterData)
 })
 
-
-router.get('/weathers/:cityName', function (req, res) {
-    const cityName = req.params.cityName
-    const data = apiMangweather.getTheData(cityName)
-    const filterData = apiMangweather.filterWeatherData(data)
-    filterData.then(weatherDb => {
-        apiMangweather.weatherDataList.push(weatherDb)
-        res.send(weatherDb)
-    }).catch(function(error){
-        console.error("this input does't exist")
-    })
-
+router.get('/weathers', async function (req, res) {
+    const Db =  await Weather.find({})
+    res.send(Db)     
 })
 
-
+router.get('/weathers/:cityName', async function (req, res) {
+    try{
+        const cityName = req.params.cityName
+        const data = await apiMangweather.getTheData(cityName)
+        const filterData = apiMangweather.filterWeatherData(data)
+        apiMangweather.weatherDataList.push(filterData)
+        res.send(filterData)
+    } catch(error){
+        console.error("The city is not exits!")
+    }
+})
 //EX 1 :
-
 router.post('/weathers/:id', function (req, res) {
     const weatherId = req.params.id
     const newData = new Weather(apiMangweather.weatherDataList.find(weatherID => weatherID.id === (parseInt(weatherId))))
@@ -49,7 +50,7 @@ router.post('/weathers', function (req, res) {
 })
 
 router.delete('/weathers/:cityName', function (req, res) {
-
     Weather.find({ "name": req.params.cityName }).deleteOne().exec().then(()=>res.send("data is deleted"))
 })
+
 module.exports = router

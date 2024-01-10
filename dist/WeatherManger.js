@@ -1,6 +1,7 @@
 class WeatherManger {
     constructor() {
         this.weatherDataList = []
+        this.myLocateWeather 
     }
     //routes
     async getAllTheWeathersData(){
@@ -11,7 +12,7 @@ class WeatherManger {
         this.weatherDataList = allDB
         return allDB
     }
-
+    
     async getWeatherByCityName(cityname) {
         try {
             const theWeather = await $.get(`/weathers/${cityname}`)
@@ -22,9 +23,8 @@ class WeatherManger {
         }
     }
 
-    async saveDataById(idData) {
-        const saveData = await $.post(`/weathers/${idData}`)
-        return saveData
+    saveDataById(idData) {
+        return $.post(`/weathers/${idData}`)
     }
 
     async deleteweather(id){
@@ -33,12 +33,18 @@ class WeatherManger {
             url: `/weathers/${cityname}`,
             type: 'DELETE',
             success: function(result) {
-
             }
         });
         return delweather  
     }
 
+    getMyWeather(lat,lon){
+        
+        return $.get(`/weather/my/${lat}/${lon}`)
+        
+    }
+ 
+ 
     getNameOfWeatherById(id){
         const i = this.weatherDataList.findIndex(x => x.id ==id)
         const name = this.weatherDataList[i].name

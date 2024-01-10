@@ -7,57 +7,74 @@
   <title>Weather full Stack project</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
 </head>
 
 <body>
+
+  
+  <div id="locat" class="mywe" ></div>
+  
   
   <div class="container-fluid">
-  
+    
     <section class="main">
       
       <section class="inputs">
         <h1>THE WEATHER TODAY</h1>
         <br><br>
-        <input type="text" placeholder="Enter any city..." id="cityinput">
+        <input type="text" placeholder="Enter any city..." id="cityinput" required>
         <input type="submit" value="Search" id="add">
       </section>
+      
+    </div>
     
-  </div>
-  
-  <div id="display" class="res"></div>
-
-  <script id="template" type="text/x-handelbars-template">
-        {{#each data}}
-        <article class="cta">
-          <div class="cta__text-column">
-            <h2>{{this.name}}</h2>
-            <h3>The Temperature: {{this.tempe}} &#8451;</h3>
-            <h3>The condition: {{this.condition}}</h3>
-            <h4>Date : {{this.date}}</h4>
-
-            {{#if this.inData}}
-              <i class="fa fa-trash btndelete" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: red;"></i>
-              <!-- <i class=reload>&#x21bb;</i> -->
-              <i class="fa fa-refresh fa-spin reload" style="font-size:24px"></i>
-            {{else}}
-              <i class="fa fa-plus btnadd" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: green;"></i>
-              <!-- <i class=reload>&#x21bb;</i> -->
-              <i class="fa fa-refresh fa-spin reload" style="font-size:24px"></i>
-            {{/if}}
-            
-          </div>
-          <img src='https://openweathermap.org/img/wn/{{this.conditionPic}}@2x.png' alt='Bluetit'></img>
-        </article>
-        {{/each}}
+    <div id="display" class="res"></div>
+    
+    
+    <script id="template" type="text/x-handelbars-template">
+      {{#each data}}
+      <article class="cta">
+        <div class="cta__text-column">
+          <h2>{{this.name}}</h2>
+          <h3>The Temperature: {{this.tempe}} &#8451;</h3>
+          <h3>The condition: {{this.condition}}</h3>
+          <h4>Last Update : {{this.date}}</h4>
+          
+          {{#if this.inData}}
+          <i class="fa fa-trash btndelete" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: red;"></i>
+          <!-- <i class=reload>&#x21bb;</i> -->
+          <i class="fa fa-refresh fa-spin reload" style="font-size:24px"></i>
+          {{else}}
+          <i class="fa fa-plus btnadd" id= {{this.id}} style="margin-bottom: 40px; display: flex; justify-items: start; color: green;"></i>
+          <!-- <i class=reload>&#x21bb;</i> -->
+          <i class="fa fa-refresh fa-spin reload" style="font-size:24px"></i>
+          {{/if}}
+          
+        </div>
+        <img src='https://openweathermap.org/img/wn/{{this.conditionPic}}@2x.png' alt='Bluetit'></img>
+      </article>
+      {{/each}}
     </script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-  <script src="configs.js"></script>
-  <script src="render.js"></script>
-  <script src="WeatherManger.js"></script>
-  <script src="controller.js"></script>
-</body>
-
-</html>
+    
+    <script id="templocat" type="text/x-handelbars-template">
+      <h1 style="color:white;">My LOCATION WEATHER</h1>
+      <article class="cta"style="background-color:yellow;">
+        <div class="cta__text-column">
+          <h2>{{this.name}}</h2>
+          <h3>The Temperature: {{this.tempe}} &#8451;</h3>
+          <h3>The condition: {{this.condition}}</h3>
+          <h4>Last Update : {{this.date}}</h4>
+        </div>
+        <img src='https://openweathermap.org/img/wn/{{this.conditionPic}}@2x.png' alt='Bluetit'></img>
+      </article>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="configs.js"></script>
+    <script src="render.js"></script>
+    <script src="WeatherManger.js"></script>
+    <script src="controller.js"></script>
+  </body>
+  
+  </html>
