@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Mongoose setup
-mongoose.connect("mongodb://127.0.0.1:27017/weatherDB", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/weatherDB", {
   useNewUrlParser: true,
 }).catch((err)=> console.log(err))
 
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname,'dist')))
 app.use(express.static(path.join(__dirname,'node_modules')))
 app.use('/', api)
 
-const port = 4200
-app.listen(port, function () {
-    console.log(`Running on port ${port}`)
+const PORT = 4200
+app.listen(process.env.PORT || PORT, function () {
+    console.log(`Running on port ${PORT}`)
 })
